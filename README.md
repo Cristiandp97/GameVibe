@@ -4,17 +4,11 @@ An e-commerce of digital videogames :video_game: realized on occassion of the We
 ## Demo
 
 
------------Da aggiungere
+-----------Da Aggiungere
 
 
 ## Technologies used
-* ```Java``` with framework ```Jakarta``` for back-end
-* ```JavaScript``` and ```JQuery``` for front-end
-* ```JavaServer Pages``` 
-* ```HTML5``` and ```CSS3```
-* ```JSON```
-* ```MySQL```
-* ```JDBC Driver```
+//Poi le metto
 
 The **Three-tier pattern** was used during development.
 
