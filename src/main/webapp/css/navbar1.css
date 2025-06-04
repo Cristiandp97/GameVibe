@@ -1,0 +1,117 @@
+/*Navigation bar 1*/
+nav.bar1 {
+	display: inline-flex;
+}
+
+nav.bar1 ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0A0A0A; 
+}
+
+nav.bar1 li {
+    float: left;
+}
+
+nav.bar1 li a{
+    display: block;
+    color: #F0F0F0; 
+    text-align: center;
+    padding: 25px 18px; 
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/*tutti gli elementi <a> discendenti da <li> discendenti da <nav> (1) che non sono active quando viene passato il mouse*/
+nav.bar1 li a:hover:not(.active){
+    color: #FFFFFF; 
+    border-bottom-style: solid;
+    border-bottom-width: 8px;
+    border-bottom-color: 	#40E0D0; 
+   
+}
+
+nav.bar1 li a.active{
+    border-bottom-style: solid;
+    border-bottom-width: 8px;
+    border-bottom-color: 	#40E0D0; 
+    color: #FFFFFF; 
+    
+}
+
+nav.bar1 li.img a:hover{
+    border-bottom-style: none;
+}
+
+nav.bar1 li.right{
+    float: right;
+}
+
+nav.bar1 li#profile a{
+    font-size: 14px;
+}
+
+/*div che definisce un menu per dispositivi mobili*/
+#content_btn{
+    display: none;
+}
+
+/*punto di modifica del layout della navbar1*/
+@media screen and (max-width: 700px) {
+
+    /*il div con threeBar diventa visibile*/
+    #content_btn{
+        display: block;
+        background-color: #383838;
+        height: 35px;
+    }
+
+    #content_btn a{
+        text-decoration: none;
+        color: #E0FFFF; 
+        font-size: 24px;
+    }
+
+    /*la navbar rimane nascosta, una funzione js la renderà visibile al click*/
+    nav.bar1{
+        margin-top: 8px;
+        display: none;
+    }
+
+    nav.bar1 li {
+        clear: both;
+        width: 100%;
+    }
+
+    nav.bar1 li a{
+        display: block;
+    }
+
+    nav.bar1 li.right{
+        float: left;
+    }
+
+    nav.bar1 li.img{
+        display: none;
+    }
+
+    nav.bar1 li{
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: #444444; 
+    }
+
+    nav.bar1 li a:not(.active), nav.bar1 li a.active, nav.bar1 li a:hover:not(.active){
+        border-bottom-style: none;
+    }
+}
+
+/*necessario in caso la navbar1 rimane nascosta con layout modificato ( <= 700px) e si torna ad uno schermo più grande*/
+@media screen and (min-width: 701px){
+
+    nav.bar1{
+        display: block !important;
+    }
+}
