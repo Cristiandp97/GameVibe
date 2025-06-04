@@ -1,9 +1,65 @@
-//fare una funzione eseguita sempre nel momento in cui ci si trova sulla home page, si occupa di modificare le immagini presenti
+//funzione eseguita sempre nel momento in cui ci si trova sulla home page, si occupa di modificare le immagini presenti
 //al centro della pagina, mediante una funzione che viene eseguita ogni 5000ms
 
+var counter = 0;
 
-        //fare modifica i colori dei cerchietti presenti sotto alle immagini, indicano quale immagine è stata raggiunta
-   
+setInterval(myFunction, 5000);
 
-//fare una funzione che viene eseguita al click dei cerchietti da parte dell'utente, cambia l'immagine presentata al centro della
+function myFunction(){
+    if(counter==0) {
+        document.getElementById("content").src = "./images/F12025/screen1.jpg";
+        //modifica i colori dei cerchietti presenti sotto alle immagini, indicano quale immagine è stata raggiunta
+        document.getElementById("img3").style.backgroundColor = "#d1d3d1";
+        document.getElementById("img2").style.backgroundColor = "#d1d3d1";
+        document.getElementById("img1").style.backgroundColor = "#2388cc";
+        counter++;
+    }
+    else if(counter==1){
+        document.getElementById("content").src = "./images/EldenRing/screen2.jpg";
+        document.getElementById("img3").style.backgroundColor = "#d1d3d1";
+        document.getElementById("img1").style.backgroundColor = "#d1d3d1";
+        document.getElementById("img2").style.backgroundColor = "#2388cc";
+        counter++;
+    }
+    else if(counter==2){
+        document.getElementById("content").src = "./images/FIFA25/screen2.jpg";
+        document.getElementById("img3").style.backgroundColor = "#2388cc";
+        document.getElementById("img1").style.backgroundColor = "#d1d3d1";
+        document.getElementById("img2").style.backgroundColor = "#d1d3d1";
+        counter=0;
+    }
+}
+
+
+//funzione che viene eseguita al click dei cerchietti da parte dell'utente, cambia l'immagine presentata al centro della
 //home page
+$(document).ready(function() {
+
+    $("input[type=radio]").click(function(event) {
+
+        //permette di ottenere l'id del cerchietto che ha scatenato l'evento click()
+        let radioID = event.target.id;
+
+        if(radioID === "img1"){
+            counter=0;
+            $("#content").attr("src", "./images/F12025/screen3.jpg");
+            $("#img1").css("background-color", "#2388cc");
+            $("#img2").css("background-color", "#d1d3d1");
+            $("#img3").css("background-color", "#d1d3d1");
+        }
+        else if(radioID === "img2"){
+            counter=1;
+            $("#content").attr("src", "./images/EldenRing/screen2.jpg");
+            $("#img1").css("background-color", "#d1d3d1");
+            $("#img2").css("background-color", "#2388cc");
+            $("#img3").css("background-color", "#d1d3d1");
+        }
+        else if(radioID === "img3"){
+            counter=2;
+            $("#content").attr("src", "./images/FIFA25/screen1.jpg");
+            $("#img1").css("background-color", "#d1d3d1");
+            $("#img2").css("background-color", "#d1d3d1");
+            $("#img3").css("background-color", "#2388cc");
+        }
+    });
+});
