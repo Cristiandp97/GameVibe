@@ -1,22 +1,22 @@
 input[type=email], input[type=password], input[type=text], input[type=date], input[type=month], select, option{
     width: 100%;
     padding: 12px;
-    border: 1px solid #99FFFF;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    color: #4A4A4A; 
+    color: #3E3E3E;
     font-weight: normal;
 }
 
 label{
     padding: 12px 12px 12px 0;
     display: inline-block;
-    color: #E0FFFF; 
+    color: white;
 }
 
 section.container{
     display: block;
-    border-radius: 6px; 
-    background-color: #2E2E2E; 
+    border-radius: 5px;
+    background-color: #3E3E3E;
     padding: 20px;
     width: 55%;
     margin-left: auto;
@@ -45,15 +45,15 @@ div.row:after {
 
 p.errorServlet, p#errori, b{
     text-align: center;
-    color: #FFA500;
+    color: orange;
 }
 
 a{
-    color: #66CCCC; 
+    color: #B7B7B7;
 }
 
 a:hover{
-    color: #FFFFFF; 
+    color: white;
 }
 
 @media screen and (max-width: 700px) {
@@ -68,7 +68,7 @@ a:hover{
     }
 
     section.container{
-        width: 85%; 
+        width: 80%;
     }
 
     h1{
