@@ -1,5 +1,5 @@
 # GameVibe
-An e-commerce of digital videogames :video_game: realized on occassion of the Web Software Technologies exam.
+Un e-commerce di videogiochi digitali 🎮 realizzato in occasione dell'esame di Tecnologie Software Web.
 
 ## Demo
 
@@ -7,12 +7,13 @@ An e-commerce of digital videogames :video_game: realized on occassion of the We
 -----------Da Aggiungere
 
 
-## Technologies used
+## Tecnologie utilizzate
 //Poi le metto
 
-The **Three-tier pattern** was used during development.
+Durante lo sviluppo è stato utilizzato il pattern architetturale Three-tier (a tre livelli).
 
-## Other
-In **documents** folder can find a template that defines the various functionalities of the web application, including the database schema.
+## Altro
+Nella cartella documents è possibile trovare un template che definisce le varie funzionalità dell'applicazione web, incluso lo schema del database.
+
 
 
