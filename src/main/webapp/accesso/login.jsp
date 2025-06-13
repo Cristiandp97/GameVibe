@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Accedi al portale</title>
+    <title>Accedi</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/generic.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/form.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar1.css" type="text/css">
@@ -16,9 +16,10 @@
     <script defer src="${pageContext.request.contextPath}/script/controlloRegistrazione.js"></script>
 </head>
 
+<!--dichiara body flessibile, il modo in cui gli elementi saranno impilati è in colonna, la lunghezza minima del body è pari al 100% della viewport-->
 <body onload="activeNavBarOnLoad()" style="min-height: 100vh; display: flex; flex-direction: column;">
 
-    <% Utente utente = null; %>
+    <% Utente utente = null;%>
 
     <header>
         <%@include file="/navbar/navbarPrincipale.jsp"%>
@@ -26,56 +27,63 @@
 
     <% String errore = (String) request.getAttribute("Errore"); %>
 
-    <div style="flex-grow: 1; background-color: #f0f8ff;">
+    <!--div flessibile che specifica di aumentare ad 1 la grandezza rispetto agli altri elementi flessibili-->
+    <div style="flex-grow: 1;">
 
-        <h1 style="color: #8B0000; text-align: center; padding-top: 25px;">Benvenuto, effettua il Login</h1>
+        <h1> Effettua l'accesso con l'account GameVibe</h1>
 
-        <section class="container" style="max-width: 480px; margin: 30px auto; padding: 20px; border: 3px solid #ffcc00; border-radius: 15px; background-color: #fffaf0;">
+                <section class="container">
 
-            <form action="${pageContext.request.contextPath}/login-servlet" method="post" id="myForm" onsubmit="return validateForm()">
+                    <form action="${pageContext.request.contextPath}/login-servlet" method="post" id="myForm">
 
-                <div class="row" style="margin-bottom: 20px;">
-                    <div class="label">
-                        <label for="email">Indirizzo Email:</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" name="email" id="email" placeholder="La tua email..." required autofocus>
-                    </div>
-                </div>
+                        <div class="row">
+                            <div class="label">
+                                <label for="email">Inserisci email: </label>
+                            </div>
 
-                <div class="row" style="margin-bottom: 25px;">
-                    <div class="label">
-                        <label for="password">La tua Password:</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" name="password" id="password" placeholder="Password qui..." required>
-                    </div>
-                </div>
+                            <div class="input">
+                                <input type="email" name="email" id="email" placeholder="Inserisci email" required autofocus>
+                            </div>
+                        </div>
 
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <input type="checkbox" name="showpwd" id="showpwd" onclick="toggleVisibility()">
-                    <span style="font-size: 14px; color: #555;">Mostra la password</span>
-                </div>
+                        <div class="row">
+                            <div class="label">
+                                <label for="password">Inserisci password: </label>
+                            </div>
 
-                <input type="submit" value="Accedi Subito!" style="background-color: #333; color: white; padding: 15px 25px; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; width: 100%;">
+                            <div class="input">
+                                <input type="password" name="password" id="password" placeholder="Inserisci password" required>
+                            </div>
+                        </div>
 
-            </form>
+                        <br>
 
-            <br>
-            <p style="text-align: center; font-size: 15px; color: #666;"> Non hai un account? <a href="${pageContext.request.contextPath}/accesso/registrati.jsp" style="color: #008080; text-decoration: underline;">Crea un nuovo account!</a> </p>
+                        <div style="text-align: center;">
+                            <input type="checkbox" name="showpwd" id="showpwd" onclick="showPassword()">
+                            <p style="display: inline;">Mostra password</p>
+                        </div>
 
-        </section>
 
-        <p id="errori" style="color: darkorange; text-align: center; margin-top: 20px; font-weight: bold; font-size: 1.1em;"></p>
+                        <br>
+                        <input type="submit" value="Accedi ora">
+
+                    </form>
+
+                        <br>
+                        <p style="font-weight: bold"> Non possiedi un account GameVibe? <a href="${pageContext.request.contextPath}/accesso/registrati.jsp"> Iscriviti </a> </p>
+
+                </section>
+
+        <p id="errori"></p>
 
         <% if(errore!=null && errore.equalsIgnoreCase("ErroreUtente")){ %>
-        <p class="errorServlet" style="color: #CC0000; text-align: center; margin-top: 15px; font-weight: bold; font-size: 1.2em;"> ERRORE CRITICO: Credenziali non valide!</p>
+        <p class="errorServlet"> <b>Nessun utente corrisponde alle credenziali inserite!</b> </p>
             <%}else if(errore!=null && errore.equalsIgnoreCase("ErroreCampi")){ %>
-        <p class="errorServlet" style="color: #CC0000; text-align: center; margin-top: 15px; font-weight: bold; font-size: 1.2em;"> ERRORE: Campi mancanti o errati!</p>
-            <% }
-            else if(errore!=null){ %>
-            <p class="errorServlet" style="color: #CC0000; text-align: center; margin-top: 15px; font-weight: bold; font-size: 1.2em;"><%=errore%></p>
-            <%}%>
+        <p class="errorServlet"> <b>Non hai inserito tutti i campi obbligatori! </b></p>
+                    <% }
+                else if(errore!=null){ %>
+                <p class="errorServlet"><%=errore%></p>
+                <%}%>
 
     </div>
 
@@ -85,16 +93,5 @@
         <%@include file="/navbar/footer.jsp"%>
     </footer>
 
-    <script>
-        function toggleVisibility() {
-            var x = document.getElementById("password");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-            alert("Attenzione: la funzionalità di visualizzazione password potrebbe essere instabile.");
-        }
-    </script>
 </body>
 </html>
