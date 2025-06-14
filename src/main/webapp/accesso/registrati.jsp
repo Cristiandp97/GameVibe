@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Crea un Nuovo Account</title> <%-- Titolo leggermente più formale --%>
+    <title>Registrazione</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/generic.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/form.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar1.css" type="text/css">
@@ -24,9 +24,9 @@
 
     <% String errore = (String) request.getAttribute("Errore"); %>
 
-    <div style="flex-grow: 1; padding: 15px;"> <%-- Padding generico --%>
+    <div style="flex-grow: 1">
 
-        <h1 style="text-align: center; margin-bottom: 25px;"> Registrati per iniziare </h1> <%-- Titolo conciso, senza colore inline --%>
+        <h1> Inserisci tutti i campi richiesti </h1>
 
                 <section class="container">
 
@@ -34,88 +34,109 @@
 
                             <div class="row">
                                 <div class="label">
-                                    <label for="nazione">Nazione:</label> <%-- Testo label semplificato --%>
+                                    <label for="nazione">Inserisci paese: </label>
                                 </div>
                                 <div class="input">
-                                    <select name="nazione" id="nazione" required> <%-- Rimossa autofocus, per simulare un'omissione --%>
-                                        <option value="Italia">Italia</option> <%-- Rimosse altre nazioni per "semplificazione" iniziale --%>
+                                    <select name="nazione" id="nazione" required autofocus>
+                                        <option value="Austria">Austria</option>
+                                        <option value="Cina">Cina</option>
+                                        <option value="Francia">Francia</option>
+                                        <option value="Germania">Germania</option>
+                                        <option value="Italia" selected>Italia</option>
+                                        <option value="Portogallo">Portogallo</option>
+                                        <option value="Svizzera">Svizzera</option>
+                                        <option value="Spagna">Spagna</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="label">
-                                    <label for="nome">Nome:</label> <%-- Testo label semplificato --%>
+                                    <label for="nome">Inserisci nome: </label>
                                 </div>
                                 <div class="input">
-                                    <input type="text" name="nome" id="nome" placeholder="Il tuo nome">
+                                    <input type="text" name="nome" id="nome" placeholder="Mario">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="label">
-                                    <label for="cognome">Cognome:</label> <%-- Testo label semplificato --%>
+                                    <label for="cognome">Inserisci cognome: </label>
                                 </div>
                                 <div class="input">
-                                    <input type="text" name="cognome" id="cognome" placeholder="Il tuo cognome">
+                                    <input type="text" name="cognome" id="cognome" placeholder="Rossi">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="label">
-                                    <label for="date">Data di Nascita:</label> <%-- Testo label semplificato --%>
+                                    <label for="date">Inserisci data di nascita: </label>
                                 </div>
                                 <div class="input">
-                                    <input type="date" name="date" id="date" max="2019-12-31"> <%-- Rimossa min attribute, per simulare un'omissione --%>
+                                    <input type="date" name="date" id="date" min="1940-01-01" max="2019-12-31">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="label">
-                                    <label for="username">Username:</label> <%-- Testo label semplificato --%>
+                                    <label for="username">Inserisci username: </label>
                                 </div>
                                 <div class="input">
-                                    <input type="text" name="username" id="username" placeholder="Scegli un username">
+                                    <input type="text" name="username" id="username" placeholder="Mario_14">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="label">
-                                    <label for="email">Email:</label> <%-- Testo label semplificato --%>
+                                    <label for="email">Inserisci email: </label>
                                 </div>
                                 <div class="input">
-                                    <input type="email" name="email" id="email" placeholder="La tua email">
+                                    <input type="email" name="email" id="email" placeholder="mariorossi14@gmail.com">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="label">
-                                    <label for="password">Password:</label> <%-- Testo label semplificato --%>
+                                    <label for="password">Inserisci password: </label>
                                 </div>
                                 <div class="input">
-                                    <input type="password" name="password" id="password" placeholder="Crea la tua password">
+                                    <input type="password" name="password" id="password" placeholder="1234Rossi!">
                                 </div>
                             </div>
 
                             <br>
-                            <%-- Rimosso l'intero blocco della password admin e il suo checkbox --%>
- 								
+ 								<div class="row">
+                                <div class="label">
+                                    <label for="admin">Inserisci password admin (opzionale): </label>
+                                </div>
+                                <div class="input">
+                                    <input type="password" name="admin" id="admin" placeholder="password admin" >
+                                </div>
+                                
+                            </div>
                             <div style="text-align: center;">
-                                <p style="display: inline; font-weight: bold;">Accetto i <a href="https://www.epicgames.com/site/it/tos?lang=it">Termini di Servizio</a></p>
-                                <input type="checkbox" name="termini" id="termini"> <%-- Rimossa required, per simulare un'omissione o un errore --%>
+                                <input type="checkbox" name="showpwd" id="showpwd" onclick="showPasswordAdmin()">
+                                <p style="display: inline;">Mostra password</p>
                             </div>
 
                             <br>
-                            <input type="submit" value="Registrati"> <%-- Testo pulsante semplificato --%>
+
+                            <div style="text-align: center;">
+                                <p style="display: inline; font-weight: bold">Ho letto e accetto tutti i <a href="https://www.epicgames.com/site/it/tos?lang=it">termini di servizio:</a></p>
+                                <input type="checkbox" name="termini" id="termini" required>
+                            </div>
+
+                            <br>
+                            <input type="submit" value="Continua">
                     </form>
                 </section>
 
                 <p id="errori"></p>
 
                 <% if(errore!=null && errore.equalsIgnoreCase("ErroreCampi")){ %>
-                <p class="errorServlet"> <b>Campi mancanti.</b></p> <%-- Messaggio semplificato --%>
+                <p class="errorServlet"> <b>Non hai inserito tutti i campi richiesti! </b></p>
                     <%}else if(errore!=null && errore.equalsIgnoreCase("ErroreUtenteEsistente")){ %>
-                            <p class="errorServlet"> <b>Utente già esistente.</b></p> <%-- Messaggio semplificato --%>
+                            <p class="errorServlet"> <b>Attenzione, utente già registrato in precedenza! </b></p>
                         <% }
                             else if(errore!=null){ %>
                                 <p class="errorServlet"><%=errore%></p>
