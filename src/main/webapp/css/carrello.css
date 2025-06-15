@@ -4,18 +4,18 @@ p{
 
 p#totale, p#vuoto{
     text-align: center;
-    margin-top: 50px;
+    margin-top: 40px;
     font-size: 22px;
 }
 
 span{
     font-weight: bold;
-    font-size: 25px;
+    font-size: 22px;
 }
 
 section {
-    margin-right: 314px;
-    margin-left: 314px;
+    margin-right: 214px;
+    margin-left: 214px;
 }
 
 table {
@@ -28,14 +28,14 @@ table {
 td {
     padding: 8px;
     text-align: center;
-    border-bottom: 1px solid #e48d8d;
+    border-bottom: 1px solid #B7B7B7;
 }
 
 td {
     color: #B7B7B7;
 }
 
-tr.trGiochi:hover {background-color: #437ca1;}
+tr.trGiochi:hover {background-color: #2388cc;}
 
 img.copertina {
     max-width: 200px;
@@ -139,7 +139,7 @@ img.icone{
     }
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 700px){
 
     p, span{
         font-size: 16px;
@@ -161,20 +161,20 @@ img.icone{
     }
 
     p#totale, p#vuoto{
-        font-size: 30px;
+        font-size: 18px;
     }
 
     img.copertina {
-        max-width: 90px;
+        max-width: 100px;
         max-height: 100px;
-        width: 80%;
+        width: 100%;
     }
 
 }
 
 @media screen and (max-width: 1050px) {
     table.carta {
-        width: 60%;
+        width: 90%;
     }
 }
 
@@ -186,6 +186,6 @@ img.icone{
     }
 
     #inserisci {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
