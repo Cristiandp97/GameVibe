@@ -1,0 +1,54 @@
+table {
+    margin-top: 60px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 800%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #2274ff;
+}
+
+th {
+    color: white;
+    font-size: 18px;
+}
+
+td {
+    color: #B7B7B7;
+}
+
+tr.trGiochi:hover {background-color: #2388cc;}
+
+img.copertine {
+    width: 250px;
+    height: 250px;
+}
+
+input[type=text], option, select{
+    color: #3E3E3E;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 800px) {
+
+    th, input[type=text], option{
+        font-size: 16px;
+    }
+
+    input[type=text], option, select{
+        overflow: hidden;
+    }
+
+    img.copertine {
+        width: 80px;
+        height: 80px;
+    }
+
+    h1{
+        font-size: 22px;
+    }
+}
