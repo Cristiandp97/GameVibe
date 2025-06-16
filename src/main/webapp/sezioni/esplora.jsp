@@ -29,11 +29,14 @@
 
             <div style="flex-grow: 1;">
 
-                    <h1>Esplora </h1>
+                    <h1>Esplora i nostri contenuti</h1>
 
                     <section>
-                        
-                         
+                        <div class="row">
+                            <div class="column">
+                                <input type="image" onclick="recuperaGiochiGenere('azione')" src="${pageContext.request.contextPath}/images/EldenRing/copertina.jpg">
+                                <p>Azione</p>
+                            </div>
                             <div class="column">
                                 <input type="image" onclick="recuperaGiochiGenere('avventura')" src="${pageContext.request.contextPath}/images/Minecraft/copertina.jpg">
                                 <p>Avventura</p>
@@ -130,7 +133,9 @@
                     };
 
 
-                  
+                    //aggiunge un addEventListener click ai td che definiscono cosa accade al click
+                    $("td").click(function (event){
+
                         var tdID = event.target.id; //permette di capire quale dei td ha generato l'evento, id sarà il prezzo del filtro
 
                         //imposta il display a none al contenitore dei giochi
