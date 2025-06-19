@@ -260,7 +260,45 @@
 
     <script>
 
-       
+        //funzione ajax che si occupa di fare richiesta asincrona alla servlet 'CarrelloServlet' di aggiunta/rimozione
+        //di un gioco dal carrello dell'utente in sessione, viene passato in input il titolo del gioco
+        function aggiungiCarrello(titoloGioco){
+
+            let xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function (){
+
+                if(this.readyState === 4 && this.status === 200) {
+
+                    //restituisce la collezione di 'input type image' che indicano la rimozione/aggiunta al carrello del gioco preso in input
+                    let arrayImg = document.getElementsByClassName(titoloGioco);
+
+                    //restituisce la collezione di 'span' che indicano i tooltip della rimozione/aggiunta al carrello
+                    let arraySpan = document.getElementsByClassName(titoloGioco + "tool");
+
+                    //parsa la stringa JSON presa dalla response in oggetto JS
+                    var risposta = JSON.parse(this.responseText);
+
+                    var rimosso = risposta["GiocoRimosso"];
+
+                    for(var i = 0; i < arrayImg.length; i++){
+                        if(rimosso === true){
+                            arrayImg[i].setAttribute("src", "${pageContext.request.contextPath}/images/icon/ListaPiu.png");
+                            arraySpan[i].innerHTML = "Aggiungi al carrello"
+                        }
+                        else{
+                            arrayImg[i].setAttribute("src", "${pageContext.request.contextPath}/images/icon/ListaMeno.png");
+                            arraySpan[i].innerHTML = "Rimuovi dal carrello"
+                        }
+                    }
+
+                }
+            }
+
+            xhttp.open("get", "${pageContext.request.contextPath}/carrello-servlet?titolo=" + titoloGioco, true);
+            xhttp.send();
+
+        }
     </script>
 
 </body>
