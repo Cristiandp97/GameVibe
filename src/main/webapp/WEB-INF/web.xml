@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+</web-app>
+<!-- 
+
+"Questa è un'applicazione web che usa la specifica Servlet 5.0. Non definisco qui dentro le mie Servlet o le loro mappature URL;
+ invece, queste sono definite direttamente nel codice Java delle Servlet usando le annotazioni (come @WebServlet)".
+
+ la configurazione specifica è spostata nel codice. -->
