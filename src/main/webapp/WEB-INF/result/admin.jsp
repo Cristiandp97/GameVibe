@@ -99,14 +99,45 @@
 
     <br>
 
-  
+    <footer>
+        <%@include file="/navbar/footer.jsp"%>
+    </footer>
 
     <script>
 
         //funzione che controlla la correttezza dei prezzi inseriti dall'utente
-        
+        function controlloPrezzi(){
 
-       
+            //restituisce una collezione di input-text
+            let prezzi = document.getElementsByClassName("prezzo");
+
+            let stringa = "<b>I seguenti campi non sono validi (inserire solo numeri, seguito da '.' e parte decimale):</b><br>";
+
+            let flag = false;
+
+            //costruisce una stringa di errore con i titoli ai quali sono stati fatti degli errori di battitura
+            for(let i = 0; i<prezzi.length; i++){
+                if(patternPrezzi(prezzi[i].value) == false){
+                    stringa+= "<b>•" + prezzi[i].getAttribute("id") + "</b> non ha un prezzo valido <br>";
+                    flag = true;
+                }
+            }
+
+            if(flag === true){
+                document.getElementById("errori").innerHTML = stringa;
+                return false;
+            }
+            else
+                return true;
+        }
+
+        function patternPrezzi(prezzo){
+            const pattern = /^[0-9]+[.][0-9]{2}$/i;    //verifica che ci siano solo numeri e in mezzo vi sia il ( . ) seguito da parte decimale
+
+            if(pattern.test(prezzo))
+                return true;
+            return false;
+        }
     </script>
 
 </body>
