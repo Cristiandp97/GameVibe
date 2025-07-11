@@ -18,14 +18,14 @@
         section{
             position: relative;
             text-align: center;
-            margin-left: 180;
-            margin-right: 180px;
+            margin-left: 214px;
+            margin-right: 214px;
         }
 
         table{
             border-collapse: collapse;
             table-layout: fixed;
-            background-color: #aa4c4c;
+            background-color: #3E3E3E;
             margin-top: 40px;
             width: 100%;
         }
@@ -43,7 +43,7 @@
         }
 
         .copertine {
-            max-width: 100px;
+            max-width: 200px;
             max-height: 200px;
             width: 100%;
         }
@@ -70,7 +70,7 @@
             }
         }
 
-        @media screen and (max-width: 1200px) and (min-width: 1151px){
+        @media screen and (max-width: 1400px) and (min-width: 1151px){
 
            .container{
                 margin-right: 114px;
@@ -125,6 +125,36 @@
         <section class="container" style="margin-top: 50px">
 
 
+            <% if(libreriaUtente.size()>0) { %>
+
+                    <%for(String titolo: libreriaUtente) {
+                        Gioco gioco = listaGiochiApplication.get(titolo);
+                            for(String path: gioco.getPathImages())
+                                if(path.contains("copertina.jpg")) {%>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <form action="${pageContext.request.contextPath}/LoadPageProdottoServlet" method="post">
+                                                    <input class="copertine" type="image" src="${pageContext.request.contextPath}/<%=path%>">
+                                                    <input type="hidden" name="titolo" value="<%=gioco.getTitolo()%>">
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <%=gioco.getTitolo()%>
+                                            </td>
+                                            <td>
+                                                <%=gioco.getDataUscita()%>
+                                            </td>
+                                            <td>
+                                                <%=gioco.getGenere()%>
+                                            </td>
+                                        <tr>
+                                    </table>
+                                <% }
+                    }
+            } else { %>
+                <p id="vuoto"> Non hai ancora aggiunto nessun gioco alla tua libreria </p>
+            <% } %>
     </section>
 </div>
 
